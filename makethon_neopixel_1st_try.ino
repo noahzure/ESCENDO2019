@@ -9,7 +9,7 @@
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
-int delayval = 1500; // delay for 1.5 second
+unsigned long time;
 
 void setup() {
   randomSeed(analogRead(0));
@@ -27,24 +27,20 @@ void loop() {
 
   randnumber=random(0,3);
   pixelnumber=random(0,2);
-
+  time = millis();
+  while(time%50==0){
   switch(randnumber){
     case 0: pixels.setPixelColor(pixelnumber, pixels.Color(0,150,0)); // Moderately bright green color.
 
     pixels.show(); // This sends the updated pixel color to the hardware.
 
-    delay(delayval); // Delay for a period of time (in milliseconds).
-
     pixels.setPixelColor(pixelnumber, pixels.Color(0,0,0));
-
-
+      
     break;
 
     case 1: pixels.setPixelColor(pixelnumber, pixels.Color(150,0,0)); // Moderately bright green color.
 
     pixels.show(); // This sends the updated pixel color to the hardware.
-
-    delay(delayval); // Delay for a period of time (in milliseconds).
 
     pixels.setPixelColor(pixelnumber, pixels.Color(0,0,0));
 
@@ -55,14 +51,12 @@ void loop() {
 
     pixels.show(); // This sends the updated pixel color to the hardware.
 
-    delay(delayval); // Delay for a period of time (in milliseconds).
-
     pixels.setPixelColor(pixelnumber, pixels.Color(0,0,0));
 
 
     break;
 
   }
-
+)
    
 }
